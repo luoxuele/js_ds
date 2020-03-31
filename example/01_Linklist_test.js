@@ -10,7 +10,10 @@ ll.insert("哟哟",1);
 ll.travel(ff);
 
 function ff(element) {
-    console.log("-----",element);
+    //if(element === "哟哟"){
+        console.log(element);
+   // }
+
 }
 
 
