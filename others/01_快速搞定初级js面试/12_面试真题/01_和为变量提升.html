@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    /*
+    * 1. var和let,const 的区别
+    * 2. typeof返回哪些类型
+    * 3. 列举强制类型转换和隐式类型转换
+    * */
+
+    /*
+    * var是es5语法，let const是es6语法； var有变量提升
+    * var和let是变量，const是常量
+    * let const 有块级作用域，var没有
+    *
+    * */
+
+</script>
+
+<script>
+
+    //var a = 100;
+    //变量提升
+    // console.log(a);
+    // var a = 100;
+
+    //let b = 200;
+    // console.log(b);
+    // let b = 200; //没有变量提升，报错
+
+    // for(var i=0; i<10; i++){
+    //     var j=i+1;
+    // }
+
+    //有块级作用域
+    for(let i=0; i<10; i++){
+        let j=i+1;
+    }
+
+    console.log(i,j);
+
+    /*
+    * undefined string number boolean symbol
+    * object (typeof null === 'object')
+    * function
+    *
+    * */
+
+
+    /*
+    * 强制：parseInt parseFloat toString
+    * 隐式： if ,逻辑运算，==，+ 拼接字符串
+    * */
+script>
+
+
+</body>
+</html>

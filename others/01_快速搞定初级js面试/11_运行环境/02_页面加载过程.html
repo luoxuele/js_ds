@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    //题目
+    //从输入url到渲染出页面的整个过程
+    //window.onload 和DOMContentLoaded的区别
+    //
+
+    //知识点
+    // 加载资源的形式
+    // 加载资源的过程
+    // 渲染页面的过程
+
+    //资源的形式
+    //html代码
+    //媒体文件，如图片，视频
+    //js css
+
+
+    // 加载过程
+    // 1. dns解析： 域名->ip地址
+    // 2. 浏览器根据ip地址发送http请求 （进程间通信）
+    // 3. 服务器处理http请求，并返回给浏览器
+
+    //渲染过程
+    // 1. 根据html代码生成DOM Tree
+    // 2. 根据css代码生成 CSSOM
+    // 3. 将DOM Tree和CSSOM 整合形成Render Tree
+    // 4. 根据Render Tree渲染页面
+    // 5. 遇到<script>则暂停渲染，优先加载并执行js代码，完成再继续render(js线程和渲染线程是同一个)
+</script>
+
+</body>
+</html>

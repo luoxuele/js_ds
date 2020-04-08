@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<button id="btn1">按钮</button>
+
+<div id="div1">
+    <p id="p1">激活</p>
+    <p id="p2">激活</p>
+    <p id="p3">激活</p>
+    <p id="p4">激活</p>
+</div>
+
+<div id="div2">
+    <p id="p5">取消</p>
+    <p id="p6">取消</p>
+</div>
+
+<script>
+    //通用的事件绑定函数
+    function bindEvent(elem,type,fn){
+        elem.addEventListener(type,fn);
+    }
+
+    const btn1 = document.getElementById("btn1");
+    bindEvent(btn1,"click",event=>{
+        console.log("clicked ")
+        console.log(event.target) //触发事件的对象
+        event.preventDefault(); //阻止默认行为
+    })
+
+    //事件冒泡
+    const p1 = document.getElementById("p1");
+    const body = document.body;
+
+    bindEvent(p1,"click",event =>{
+        event.stopPropagation(); //阻止事件冒泡
+        //如果不阻止事件冒泡,如果他的父元素也监听了click事件,就会触发执行相应的事件处理函数
+        console.log('p1 激活');
+    })
+
+    bindEvent(body,"click", event =>{
+        console.log("我是body的click事件")
+    })
+
+    bindEvent(p1.parentElement,"click",event=>{
+        console.log("我是div1的click事件")
+    })
+
+</script>
+
+</body>
+</html>

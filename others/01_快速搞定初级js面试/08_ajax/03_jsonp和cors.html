@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+
+    //jsonp
+    //cors
+
+    //jsonp原理
+    // 1.script可以绕过跨域限制
+    // 2. 服务器可以任意动态拼接数据返回
+    // 3. 所以script就可以获得跨域的数据
+
+    window.callback = function(data){
+        console.log(data);
+    }
+
+    //cors原理
+    // CORS需要浏览器和服务器同时支持
+    // 服务器设置httpheader
+    //客户端 用XMLHttprequest设置了httpheader
+
+
+</script>
+
+<script src="https://www.imooc.com/static/img/index/logo.png"></script>
+
+
+</body>
+</html>

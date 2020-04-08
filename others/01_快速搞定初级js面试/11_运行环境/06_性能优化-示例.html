@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script src="a.js"></script>
+<script>
+    //缓存
+    // 静态资源加hash后缀，根据文件内容计算hash
+    // 文件内容不变，则hash不变，则url不变
+    // url和文件不变，则会自动触发http缓存机制，返回304
+
+
+    //ssr  server side render
+    // 服务器端渲染：将网页和数据一起加载，一起渲染
+    // 非ssr(前端后端分离)： 先加载网页，再加载数据（ajax），然后才渲染
+
+    //懒加载
+    //图片，评论等等
+
+    //缓存dom查询结果
+
+
+</script>
+
+<img src="preview.png" data-realsrc="abc.png" alt="" id="img1">
+<script>
+    let img1 = document.getElementById("img1");
+    img1.src = img1.getAttribute("data-realsrc")
+</script>
+
+</body>
+</html>

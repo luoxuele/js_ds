@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+
+
+<body>
+<div>
+    呵呵
+    <p>一段文字 1</p>
+    <p>一段文字 2</p>
+    <p>一段文字 3</p>
+    <div>呵呵</div>
+</div>
+
+<script>
+    //dom是一棵树
+    //插入节点
+    //删除节点
+    //获取节点,节点子元素,父元素
+
+    const p1 = document.createElement('p');
+    p1.innerHTML = "this is p1";
+
+    //const bd = document.getElementsByTagName('body');
+    document.body.appendChild(p1); //添加新元素
+
+    const div1 = document.getElementsByTagName("div")[0];
+    //console.log(div1);
+    div1.appendChild(p1);
+    //对已经有的节点会移动
+
+    //获取父元素
+    // console.log(p1.parentNode);
+    const div1ChildNodesp = Array.prototype.slice.call(div1.childNodes).filter(child=>{
+        if(child.nodeType === 1){
+            return true;
+        }
+        return false;
+    });
+    console.log(div1.childNodes);
+    console.log(div1ChildNodesp);
+
+    div1.removeChild(div1ChildNodesp[0]);
+
+</script>
+
+</body>
+</html>

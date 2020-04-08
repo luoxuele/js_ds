@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    /*
+    * 性能优化是一个综合性问题
+    * 某些细节问题可能会单独提问题： 手写防抖，节流
+    *
+    *
+    * 性能优化原则
+    * 1. 多使用内存，缓存或其它方法
+    * 2. 减少cpu计算量，减少网络加载耗时
+    * 3. 空间换时间（适用于所有编程的性能优化）
+    *
+    *
+    * 从何入手
+    * 1. 让加载更快
+    *       减少资源体积：压缩代码
+    *       减少访问次数： 合并代码，ssr服务端渲染，缓存
+    *       使用更快的网络： CDN
+    * 2. 让渲染更快,更流畅
+    *       css放在head中，js放在body后
+    *       尽早开始执行js,用DOMContentLoaded 触发
+    *       懒加载（图片懒加载，上滑加载更多）
+    *       对dom查询进行缓存
+    *       频繁dom操作，合并到一起插入到dom树中
+    *       节流throttle 防抖debounce
+    * */
+</script>
+
+</body>
+</html>

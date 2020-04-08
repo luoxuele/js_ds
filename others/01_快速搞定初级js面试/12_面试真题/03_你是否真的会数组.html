@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    /*
+    * 数组slice和splice的区别
+    * [10,20,30].map(parseInt) 返回的结果是什么
+    * ajax请求get和post的区别？
+    * */
+
+
+    /*
+    * slice 切片
+    * splice 剪接
+    *
+    * */
+
+    const arr1 = [10,20,30,40]
+    //const arr2 = arr1.slice(1)
+    const arr2 = arr1.slice(-2)
+
+   //console.log(arr2);
+
+    const result = arr1.splice(1,2,'a','b','c')
+    //从1开始，剪掉两个，然后把后面的从1开始拼接
+    const result2 = arr1.splice(1,0,'a','b','c') //从1开始插入
+
+
+    // map 的参数和返回值
+    // parseInt的参数和返回值
+
+    let xxx = [10,20,30].map(parseInt)
+    console.log(xxx)
+
+    //拆解
+    [10,20,30].map((num, index)=>{
+        parseInt(num,index)
+    })
+
+
+    //get一般用于查询操作  post一般用于提交操作
+    // get参数拼接在url上，post放在请求体内（数据体积可能大）
+
+
+</script>
+
+</body>
+</html>

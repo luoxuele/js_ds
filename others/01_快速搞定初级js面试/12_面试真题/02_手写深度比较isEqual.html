@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    /*
+    * 手写深度比较，模拟lodash isEqual
+    * split()和join()的区别
+    * 数组的pop,push,unshift, shift 分别做什么
+    *
+    * */
+
+
+    const obj1 = {a:10,b:{x:100,y:200}}
+    const obj2 = {a:10,b:{x:100,y:200}}
+    //isEqual(obj1,obj2) === true
+    // console.log(obj1 == obj2)
+
+    function isObject(obj){
+        return typeof obj === 'object' && obj !== null
+    }
+
+    //全相等
+    function isEqual(obj1, obj2){
+        if(!isObject(obj1) || !isObject(obj2)){
+            //值类型，（参与equal的一般不会是函数）
+            return obj1 === obj2;
+        }
+
+        if(obj1 === obj2){
+            return true
+        }
+
+        //两个都是对象或数组，而且不相等
+        //数组和对象都有keys
+        const obj1Keys = Object.keys(obj1);
+        const obj2Keys = Object.keys(obj2);
+        if(obj1Keys.length !== obj2Keys.length){
+            return false;
+        }
+
+        //2. 以obj1为基准，和obj2以此递归比较
+        for(let key in obj1){
+            //比较当前key的val --递归
+            const res = isEqual(obj1[key], obj2[key])
+            if(!res){
+                return false;
+            }
+        }
+
+        //3. 全相等
+        return true;
+    }
+
+    console.log(isEqual(obj1,obj2))
+
+
+    console.log("1-2-3".split('-'));
+    console.log([1,2,3].join("-"))
+    //split把字符串分割成数组
+    //join把数组拼接成字符串
+
+    /*
+    * pop 弹出数组最后一个元素
+    * push 压栈，把元素压入的数组的尾部//返回值是数组的长度
+    *
+    * unshift 往头部插一个元素，返回值是数组的长度
+    * shift 出队列，
+    *
+    * */
+
+    //扩展，数组有哪些api是纯函数
+    //纯函数： 1.不改变源数组， 2. 返回一个数组
+    //concat
+    //map
+    //filter
+    //slice
+
+    let arr1 = [10,20,30]
+    const arr2 = arr1.concat([30,40,50])
+    const arr3 = arr1.map(num =>num*10)
+    const arr4 = arr1.filter(num=>num>20)
+    const arr5 = arr1.slice()
+
+    //forEach some every reduce
+</script>
+
+</body>
+</html>

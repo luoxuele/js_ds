@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div>
+    呵呵
+    <p>一段文字 1</p>
+    <p>一段文字 2</p>
+    <p>一段文字 3</p>
+    <div>呵呵</div>
+
+    <ul>
+
+    </ul>
+</div>
+
+<script>
+    // 1. dom操作非常昂贵,避免频繁的dom操作
+    // 2. 对dom查询做缓存
+    // 3. 将频繁操作改为一次性操作
+
+    for(let i =0; i<document.getElementsByTagName('p').length; i++){
+        console.log(i)
+        //每次循环都会计算length
+    }
+
+
+    //缓存dom查询结果
+    const pList = document.getElementsByTagName('p');
+    const length = pList.length;
+
+    for(let i=0; i<length; i++){
+        console.log(pList[i].innerHTML);
+    }
+
+
+    //将频繁操作改为一次操作
+    const ul = document.getElementsByTagName("ul")[0];
+
+    // for(let i =1; i< 10; i++){
+    //     const li = document.createElement("li");
+    //     li.innerHTML = "list item"+(i+1);
+    //     ul.appendChild(li);
+    // }
+
+    // 1. 创建一个文档片段,此时还没有插入到dom树中
+    const frag = document.createDocumentFragment();
+
+    // 2. 执行插入
+    for(let i =0; i<10; i++){
+        const li = document.createElement("li");
+        li.innerHTML = `list item ${i+1}`;
+        frag.appendChild(li);
+        //先插入到文档片段frag中,没有操作dom树,没有渲染,速度快
+    }
+
+    // 3. 都完成之后再插入到dom树中
+    ul.appendChild(frag);
+
+</script>
+
+</body>
+</html>

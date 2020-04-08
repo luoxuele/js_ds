@@ -14,3 +14,6 @@ dlink.travel();
 console.log("----------");
 dlink.retravel();
 
+console.log(dlink instanceof Object);
+console.log(dlink instanceof DLinkedList);
+

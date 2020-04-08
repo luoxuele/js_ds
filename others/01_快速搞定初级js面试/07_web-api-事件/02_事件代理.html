@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="div1">
+    <a href="#">a1</a>
+    <a href="#">a2</a>
+    <a href="#">a3</a>
+    <a href="#">a4</a>
+</div>
+
+<button>添加一个a标签</button>
+
+
+<script>
+    /*
+    * 代理,你做一件事觉得麻烦,让别人代理你去做
+    *
+    * 事件代理: 基于事件冒泡
+    * 本来是子元素的事件,让父元素去触发事件
+    *
+    * */
+
+    const div1 = document.getElementById("div1");
+
+    // div1.addEventListener("click",e => {
+    //     e.preventDefault(); //阻止默认行为
+    //     const target = e.target;
+    //     console.log(target.innerHTML)
+    //     // if(e.nodeName === 'A'){
+    //     //     console.log(target.innerHTML);
+    //     // }
+    // })
+
+    //事件代理特点
+    //1. 代码简洁
+    //2. 减少浏览器内存占用
+    //3. 注意不要滥用
+
+
+    //通用事件绑定函数,支持事件代理
+    function bindEvent(elem,type,selector,fn){
+        if(fn==null){
+            fn = selector;
+            selector = null;
+        }
+
+        elem.addEventListener(type,event=>{
+            const target = event.target;
+            if(selector){
+                //有代理,代理绑定
+                if(target.matches(selector)){
+                    fn.call(target,event)
+                }
+
+            }else{
+                // 普通绑定
+                fn.call(target, event);
+            }
+        })
+    }
+
+    // function fn(){
+    //     console.log(this.innerHTML);
+    // }
+
+
+    bindEvent(div1,"click","a",()=>{
+        console.log(this.innerHTML);
+    });
+
+
+</script>
+
+</body>
+</html>

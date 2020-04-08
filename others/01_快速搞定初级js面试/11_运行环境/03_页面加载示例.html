@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        div{
+            width: 100%;
+            height: 100px;
+            background: #00a0e9;
+        }
+    </style>
+</head>
+<body>
+
+<div>div1</div>
+<img src="xxx.png" alt="">
+<div id="container">default</div>
+
+<script>
+    //为什么建议css放到head中
+    //为什么建议js放到body之后
+    //img不会阻止页面渲染
+    document.getElementById("container").innerHTML = "update";
+
+
+    //window.onload 和 DOMContentLoaded 的区别
+    window.addEventListener("load",function () {
+        //页面的全部资源加载完才会执行，包括图片，视频等
+    });
+
+    document.addEventListener("DOMContentLoaded",function () {
+        //dom渲染完成即可执行，此时图片，视频可能还没加载完成
+    })
+
+</script>
+
+<p>test</p>
+
+</body>
+</html>
