@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    //手写字符串trim方法，保证浏览器兼容性
+    //如何获取多个数字中的最大值
+    //如何用js实现继承
+
+    String.prototype.trim = function () {
+        return this.replace(/^\s+/,"").replace(/\s+$/,"")
+    }
+    //原型，this,正则表达式
+
+    //max(10,30,90,80,40)
+
+    function max(){
+        const nums = Array.prototype.slice.call(arguments) //变为数组
+        let max = nums[0]
+        nums.forEach(n=>{
+            if(n>max){
+                max = n;
+            }
+        })
+
+        return max;
+    }
+
+    console.log(max(10,30,90,80,40))
+    console.log(Math.max(10,30,90,80,40))
+
+
+    //class继承
+    //prototype //es5，不推荐
+
+
+</script>
+
+</body>
+</html>

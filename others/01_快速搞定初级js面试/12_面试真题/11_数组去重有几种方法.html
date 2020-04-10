@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    /*
+    * 将url参数解析为js对象
+    * 手写数组flatern ,考虑多级
+    * 数组去重
+    *
+    * */
+
+    //使用URLSearchParams
+    function queryToObj(){
+        const res = {};
+        const pList = new URLSearchParams(location.search)
+        pList.forEach((val,key)=>{
+            res[key] = val
+        })
+
+        return res;
+    }
+
+    //手写flatern,考虑多层级
+    // flat([[1,2],3,[4,5,[6,7,8,[9,10]]]]);
+    //[1,2,3,4,5,6,7,8,9,10]
+
+
+
+    function flat(arr){
+        //验证arr中还有没有深层数组
+        const isDeep = arr.some(item=>item instanceof Array)
+        if(!isDeep){
+            return arr
+        }
+
+        const res = Array.prototype.concat.apply([],arr)
+        return flat(res)
+    }
+
+    const res = flat([[1,2],3,[4,5,[6,7,8,[9,10]]]]);
+    //const res = [[1,2],3,[4,5,[6,7,8,[9,10]]]].flat(10)
+    console.log(res);
+
+
+    //数组去重
+    //1. 传统遍历，挨个比较
+    //2. 使用Set
+    //考虑计算效率
+
+    function unique(arr){
+        const res = [];
+        arr.forEach(item=>{
+            if(res.indexOf(item) <0){
+                res.push(item)
+            }
+        })
+
+        return res;
+    }
+
+    //使用Set(无序，不能重复)
+    function unique2(arr){
+        const set = new Set(arr)
+        return [...set]
+    }
+
+    const arr1 = [1,2,3,4,5,2,3]
+    const arr2 = unique(arr1)
+    console.log(arr2)
+
+
+
+
+</script>
+</body>
+</html>

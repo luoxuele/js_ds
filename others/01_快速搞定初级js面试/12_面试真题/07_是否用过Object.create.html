@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    /*
+    * 函数声明和函数表达式的区别
+    * new Object() 和 Object.crate()区别
+    * 关于this的场景题
+    *
+    * */
+
+    //fn1();
+    //fn2();
+
+    //console.log(fn1,fn2)
+
+
+    function fn1(){
+        console.log("我是fn1")
+    }
+
+    let fn2 = function(){
+        console.log("我是fn2")
+    }
+
+    //函数声明，会预加载（变量提升）
+    //函数表达式（变量等于一个函数） 不会预加载
+
+    //fn2()
+
+    //{}等同于new Object(),实例对象的隐式原型是Object.protottype
+
+
+    //Object.crate(null) ,没有原型
+    //Object.crate({}), 指定原型
+
+    const obj1 = {};
+    console.log(obj1.__proto__ === Object.prototype)
+
+    const obj2 = Object.create(obj1);
+    console.log(obj2.__proto__ === obj1)
+
+
+    //this场景
+    const User = {
+        count: 1,
+        // getCount:function () {
+        //     console.log(this)
+        //     return this.count;
+        // }
+
+        getCount:()=> {
+            console.log(this)
+            return this.count;
+        }
+    }
+
+    console.log(User.getCount())  //1
+    const func = User.getCount;
+    console.log(func()) //undefined
+    //this是执行的时候确定的
+    //直接执行getCount函数，this指向的是window
+
+    //箭头函数没有this指针，所以函数在哪里执行，this就是谁
+
+</script>
+
+</body>
+</html>

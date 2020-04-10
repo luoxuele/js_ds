@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    /*
+    * 如何捕获js程序中的异常
+    * 什么是json
+    * 获取当前页面url参数
+    *
+    * */
+
+    //手动捕获异常
+    try{
+        //todo
+    }catch(ex){
+        console.error(ex) //手动捕获catch
+    }finally{
+        // todo
+    }
+
+    //自动捕获
+    window.onerror = function (message,source,linkNum,colNum,error) {
+
+        //第一，对跨域的js,如cdn,不会有详细的报错信息
+        //第二，对于压缩的js,还要配合sourceMap,
+            //反查到未压缩代码的行，列
+
+    }
+
+
+    //json是一种数据格式，本质是一段字符串
+    //json格式和js对象结构一致，对js语言更友好
+
+    //window.JSON 是一个全局对象
+    //JSON.stringify
+    //JSON.parse
+
+    //获取当前页面url参数
+    //传统方式： location.search
+    //新api, URLSearchParams
+
+    // console.log(location.search)
+    // console.log(URLSearchParams)
+
+    //传统方式
+    function query(name){
+        const search = location.search.substr(1); //
+        //search : 'a=10&b=20&c=30'
+        const reg = new RegExp(`(^|&)${name}=([^&]*)(&|$)`,'i')
+        const reg1 = /^abc/i
+
+        const res = search.match(reg)
+
+        if(res == null){
+            return null
+        }
+        return res[2]
+    }
+
+    //URLSearchParams
+    function query(name){
+        const search = location.search
+        const p = new URLSearchParams(search)
+        return p.get(name)
+    }
+
+    console.log(query("_ijt"))
+
+
+
+
+</script>
+
+
+</body>
+</html>
